@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    background-color: rgb(52, 2, 98);
+    color: white;
+}
+.divBody {
+    position: absolute;
+    margin-top: 3rem;
+    padding: 10px;
+}
+::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgb(28, 1, 53); /* Cor do fundo da barra de rolagem */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(50, 50, 50); /* Cor do indicador de rolagem */
+    border-radius: 5px; /* Raio das bordas do indicador de rolagem */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cor do indicador de rolagem ao passar o mouse */
+  }
+  
