@@ -43,16 +43,20 @@
     <div>
         <h1>Cadastro</h1>
         <form action="add.php" method="POST">
-            <input type="text" name="email" placeholder="E-mail">
+            <input type="text" name="email" placeholder="E-mail" required>
                 <br><br>
-            <input type="text" name="nome" placeholder="Nome">
+            <input type="text" name="nome" placeholder="Nome" required>
                 <br><br>
-            <input type="text" name="usuario" placeholder="Usuário">
+            <input type="text" name="usuario" placeholder="Usuário" required>
                 <br><br>
-            <input type="password" name="senha" placeholder="Senha">
+            <input type="password" name="senha" placeholder="Senha" required>
                 <br><br>
-            <button>Enviar</button>
-        </form>
+                <input type="password" name="confirmarSenha" placeholder="Confirmar Senha">
+            <button>Cadastrar</button>
+        </form> 
+        <p>Já é cadastrado? <a href="login.php">Login</a>  </p>
     </div>
+    <br>
+   
 </body>
 </html>

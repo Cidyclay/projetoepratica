@@ -8,5 +8,7 @@
 </head>
 <body>
     <a href="cadastro.php">CADASTRO</a>
+    <br>
+    <a href="login.php">LOGIN</a>
 </body>
 </html>
