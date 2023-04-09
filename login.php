@@ -18,23 +18,22 @@
         <button>Entrar</button>
     </form>
 
-     <?php
+    <?php
+    if (!empty($_POST)) {
 
-    $fp = fopen("users.csv", "r");
-    while (($row = fgetcsv($fp)) !== false) {
-        if (($_POST['email'] == $row[0]) && ($_POST['senha'] == $row[3]) && (!empty($_POST))) {
+        $fp = fopen("users.csv", "r");
+        while (($row = fgetcsv($fp)) !== false) {
+            if (isset($_POST['email']) && $_POST['email'] == $row[0] && isset($_POST['senha']) && $_POST['senha'] == $row[3]) {
+               
+                http_response_code(302);
+                echo "logado(a) com sucesso";
+                exit();
+            }
+        }
 
-            // echo "logado(a) com sucesso";
-            // http_response_code(400);
-                header('location:post.php');
-            exit();
-        }  
-    }
-
-    if(!empty($_POST)) {
         echo "Dados incorretos";
-    }  
-     ?> 
+    }
+    ?>
 
 
 </body>

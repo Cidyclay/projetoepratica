@@ -12,7 +12,7 @@ $confirmarSenha = $_POST["confirmarSenha"];
 
 $fp = fopen("users.csv","r");
 while (($row = fgetcsv($fp)) !== false) {
-    if($row[0] == $email || $row[2] == $usuario) {
+    if($row[0] == $email || $usuario[2] == $usuario) {
         echo "Dados já utilizados";
         exit();
     } 
@@ -30,10 +30,11 @@ if($senha != $confirmarSenha) {
 $fp = fopen("users.csv","a");
 fputcsv($fp,[$email,$nome,$usuario,$senha]);
 
-echo "Cadastrado com sucesso";
 
 ### Redirect ###
  http_response_code(302);
- header('location:login.php');
+ header('Location: login.php');
+ exit;
+ echo "Cadastrado com sucesso";
 
-?>
+ ?>
