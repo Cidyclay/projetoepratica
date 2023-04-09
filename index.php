@@ -7,6 +7,6 @@
     <title>Index</title>
 </head>
 <body>
-    
+    <a href="cadastro.php">CADASTRO</a>
 </body>
 </html>
