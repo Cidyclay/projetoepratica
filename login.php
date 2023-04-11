@@ -13,7 +13,7 @@
     <h1>Fazer login</h1>
 
     <form action="" method="POST">
-        <input type="text" name="email" placeholder="E-mail" required>
+        <input type="email" name="email" placeholder="E-mail" required>
         <input type="password" name="senha" placeholder="Senha" required>
         <button>Entrar</button>
     </form>

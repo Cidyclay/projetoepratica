@@ -50,7 +50,7 @@
     <div>
         <h1>Cadastro</h1>
         <form action="add.php" method="POST">
-            <input type="text" name="email" placeholder="E-mail" required>
+            <input type="email" name="email" placeholder="E-mail" required>
             <br><br>
             <input type="text" name="nome" placeholder="Nome" required>
             <br><br>
