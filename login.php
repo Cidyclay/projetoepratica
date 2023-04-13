@@ -24,9 +24,9 @@
         $fp = fopen("users.csv", "r");
         while (($row = fgetcsv($fp)) !== false) {
             if (isset($_POST['email']) && $_POST['email'] == $row[0] && isset($_POST['senha']) && $_POST['senha'] == $row[3]) {
-               
-                http_response_code(302);
                 echo "logado(a) com sucesso";
+                //Pergunta pra raniere, se isto aqui e magia..
+                echo "<script>window.location.href='social.php';</script>";
                 exit();
             }
         }

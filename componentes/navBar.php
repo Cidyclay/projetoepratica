@@ -7,7 +7,7 @@
                     <img id='imgNavBar' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh-Bn7-KSnRyMXgvNe72nE1qh9kTxrBHM2cQ&usqp=CAU' alt='Perfil'>
                 </a>
 
-                <a class='iconesNavBar' href='/'>
+                <a class='iconesNavBar' href='social.php'>
                     <i class='icones material-symbols-outlined'>home</i>
                 </a>
 
