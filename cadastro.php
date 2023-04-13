@@ -8,6 +8,9 @@
     <title>Tela de Cadastro</title>
 
     <style>
+        body{
+            background-color: rgb(52, 2, 98);
+        }
         .CorpoCadastro{
             border: 2px solid black;
             position: absolute;
@@ -25,6 +28,7 @@
 
         .TituloCadastro{
             text-align: center;
+            font-size: 50px;
         }
 
         button:hover {
@@ -34,14 +38,17 @@
         button {
             color: white;
             font-size: 20px;
-            background-color: black;
+            background-color: purple;
             padding: 10px;
             border: 1px solid black;
             width: 100%;
         }
 
         button:active {
-            box-shadow: inset -4px 4px 0 white;
+            box-shadow: inset -4px 4px 0 blue;
+        }
+        p{
+            font-size: 25px;
         }
     </style>
 </head>
