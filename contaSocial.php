@@ -87,7 +87,7 @@
 <body>
   <?php include "componentes/navBar.php" ?>
   <?= navBar("Conta") ?>
-  <div class="divBody">
+  <div class="divBody" style="margin-left:40%;">
 
     <div id="formularioLogin">
 
