@@ -10,7 +10,6 @@ $fp = fopen('publis.csv', 'a');
 fputcsv($fp, [$titulo, $conteudo, $dataPublicacao]);
 
 http_response_code(302);
-header('location:index.php');
-
+header('location:comunidadeSocial.php');
 
 ?>

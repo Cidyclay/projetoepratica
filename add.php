@@ -33,7 +33,7 @@ fputcsv($fp,[$email,$nome,$usuario,$senha]);
 
 ### Redirect ###
  http_response_code(302);
- header('Location: login.php');
+ header('Location: contaSocial.php');
  exit;
  echo "Cadastrado com sucesso";
 

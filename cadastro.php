@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Cadastro</title>
+    <link rel="stylesheet" href="/componentes/navBar.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <title>MGT</title>
 
     <style>
         body{
@@ -54,6 +57,9 @@
 </head>
 
 <body>
+<?php include "componentes/navBar.php" ?>
+  <?= navBar("Conta") ?>
+
     <div class="CorpoCadastro">
         <h1 class="TituloCadastro">Cadastro</h1>
         <form action="add.php" method="POST">
@@ -68,9 +74,8 @@
             <input type="password" name="confirmarSenha" placeholder="Confirmar Senha">
             <button>Cadastrar</button>
         </form>
-        <p>Já é cadastrado? <a href="login.php">Login</a> </p>
+        <p>Já é cadastrado? <a href="contaSocial.php">Login</a> </p>
     </div>
-    <br>
 
 </body>
 
