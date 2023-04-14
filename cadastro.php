@@ -6,75 +6,105 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/componentes/navBar.css">
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <title>MGT</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>MGT</title>
 
     <style>
-        body{
-            background-color: rgb(52, 2, 98);
-        }
-        .CorpoCadastro{
-            border: 2px solid black;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 80px;
-            color: black;
+        #formularioCadastro {
+            width: 24rem;
+            height: 30rem;
+            background-color: rgb(17 20 39);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 6px 6px 0px black;
+
         }
 
-        input {
-            padding: 15px;
-            border: 1px solid black;
-        }
-
-        .TituloCadastro{
-            text-align: center;
-            font-size: 50px;
-        }
-
-        button:hover {
-            cursor: pointer;
+        .input {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            color: #4b5563;
+            background-color: #fff;
+            border-width: 1px;
+            border-style: solid;
+            border-color: black;
+            border-radius: 0.5rem;
         }
 
         button {
-            color: white;
-            font-size: 20px;
-            background-color: purple;
-            padding: 10px;
-            border: 1px solid black;
-            width: 100%;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-width: 1px;
+            border-style: solid;
+            border-color: black;
+            border-radius: 0.5rem;
+            box-shadow: 3px 3px 0 1px black;
+        }
+
+        button:hover {
+            background-color: #836FFF;
+            box-shadow: 3px 3px 0 1px black;
+        }
+
+        button:focus {
+            box-shadow: 0 0 0 2px rgba(38, 103, 255, 0.5);
         }
 
         button:active {
-            box-shadow: inset -4px 4px 0 blue;
-        }
-        p{
-            font-size: 25px;
+            box-shadow: 0 0 0 0 black;
+            transform: translate(4px, 4px);
         }
     </style>
 </head>
+<?php
+### armazenando ###
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $nome = $_POST["nome"];
+    $usuario = $_POST["usuario"];
+    $senha = $_POST["senha"];
+    $confirmarSenha = $_POST["confirmarSenha"];
+}
+
+?>
 
 <body>
-<?php include "componentes/navBar.php" ?>
-  <?= navBar("Conta") ?>
+    <?php include "componentes/navBar.php" ?>
+    <?= navBar("Conta") ?>
+    <div class="divBody">
+        <form id="formularioCadastro" action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
+            <h1 class="TituloCadastro" style="border-bottom: 2px solid; border-color: #2d2969; font-size: 2em;">Cadastro</h1>
+            <div>
+                <input class="input" type="email" name="email" placeholder="E-mail" required>
 
-    <div class="CorpoCadastro">
-        <h1 class="TituloCadastro">Cadastro</h1>
-        <form action="add.php" method="POST">
-            <input type="email" name="email" placeholder="E-mail" required>
-            <br><br>
-            <input type="text" name="nome" placeholder="Nome" required>
-            <br><br>
-            <input type="text" name="usuario" placeholder="Usuário" required>
-            <br><br>
-            <input type="password" name="senha" placeholder="Senha" required>
-            <br><br>
-            <input type="password" name="confirmarSenha" placeholder="Confirmar Senha">
+            </div>
+            <div>
+                <input class="input" type="text" name="nome" placeholder="Nome" required>
+
+            </div>
+            <div>
+                <input class="input" type="text" name="usuario" placeholder="Usuário" required>
+
+            </div>
+            <div>
+                <input class="input" type="password" name="senha" placeholder="Senha" required>
+
+            </div>
+            <div>
+                <input class="input" type="password" name="confirmarSenha" placeholder="Confirmar Senha">
+
+            </div>
+
             <button>Cadastrar</button>
+            <p><a href="contaSocial.php">Já é cadastrado? Login</a></p>
         </form>
-        <p>Já é cadastrado? <a href="contaSocial.php">Login</a> </p>
+
     </div>
 
 </body>

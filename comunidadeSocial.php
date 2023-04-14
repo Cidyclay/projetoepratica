@@ -18,14 +18,13 @@
     <div class="divBody" style="margin-left: 30%;">
         <h1>Criar Publicações</h1>
 
-        <php $nomeArquivo='publis.csv' ; $arquivo=file($nomeArquivo) ?>
+         <php $nomeArquivo='publis.csv' ; $arquivo=file($nomeArquivo) ?>
 
             <form action="add_post.php" method="POST">
                 <input type="text" name="titulo" placeholder="Titulo*" required>
                 <input type="text" name="conteudo" placeholder="Conteudo*" required>
                 <input type="submit" name="criar" value="Criar" class="criar-butao">
             </form>
-
 
             <?php $fp = fopen('publis.csv', 'r') ?>
             <?php while (($rom = fgetcsv($fp)) !== false) : ?>
@@ -37,7 +36,7 @@
                 endif ?>
                 
                     <div style=" text-align: center; width:500px">
-                        <div style="">
+                        <div>
                             <h2 class="publicacao"><?= $rom[0] ?></h2>
     
                         </div>

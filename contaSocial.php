@@ -14,14 +14,14 @@
   #formularioLogin {
     width: 24rem;
     height: 20rem;
-    margin-left: auto;
-    background-color: rgb(17 24 39);
+    background-color: rgb(17 20 39);
     border-radius: 0.5rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    box-shadow: 6px 6px 0px black;
   }
 
   #h3Login {
@@ -39,33 +39,23 @@
     background-color: #fff;
     border-width: 1px;
     border-style: solid;
-    border-color: #e5e7eb;
+    border-color: black;
     border-radius: 0.5rem;
   }
 
   button {
-    padding: 0.5rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.25;
-    text-transform: capitalize;
-    background-color: #2563eb;
-    color: #fff;
-    border-radius: 0.375rem;
-    border: 1px solid transparent;
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    outline: none;
+    padding: 0.5rem 1rem;
     cursor: pointer;
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: black;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 0 1px black;
   }
 
   button:hover {
-    background-color: #1d4ed8;
+    background-color: #836FFF;
+    box-shadow: 3px 3px 0 1px black;
   }
 
   button:focus {
@@ -73,8 +63,8 @@
   }
 
   button:active {
-    transform: scale(0.95);
-  }
+    box-shadow: 0 0 0 0 black;
+    transform: translate(4px, 4px);  }
 
   #parteCima {
     display: flex;
@@ -87,14 +77,14 @@
 <body>
   <?php include "componentes/navBar.php" ?>
   <?= navBar("Conta") ?>
-  <div class="divBody" style="margin-left:40%;">
+  <div class="divBody" style=" display:flex; flex-direction: column;  justify-content: center; align-items: center; width: 98vw; height: 100%;">
 
     <div id="formularioLogin">
 
       <div id="parteCima">
 
-        <h3 id="h3Login">Faça o login</h3>
-
+        <h3 id="h3Login" style="border-bottom: 2px solid; border-color: #2d2969; font-size: 1.5em;">Faça o login</h3>
+        
         <form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
 
           <div style="width: 100%;  margin-top: 1rem;">
@@ -105,14 +95,14 @@
             <input class="input" type="password" name="senha" placeholder="Senha" required>
           </div>
 
-          <div>
+          <div style="margin-top: 10%; display: flex; justify-content: center;">
             <button>Entrar</button>
           </div>
         </form>
-
       </div>
 
       <?php
+      $checkConta = true;
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fp = fopen("users.csv", "r");
         if ($fp) {
@@ -124,12 +114,15 @@
               exit();
             }
           }
+          $checkConta = false;
         }
       }
       ?>
       <div>
-        <p><a href="cadastro.php
-        ">Crie sua conta aqui!</a></p>
+        <?php if(!$checkConta):?>
+          <p style="text-align: center; color:red;">Dados invalidos!</p>
+          <?php endif?>
+        <p><a href="cadastro.php">Crie sua conta aqui!</a></p>
       </div>
     </div>
   </div>
