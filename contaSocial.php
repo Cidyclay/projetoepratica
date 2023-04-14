@@ -95,7 +95,7 @@
 
         <h3 id="h3Login">Faça o login</h3>
 
-        <form action="<?= $_SERVER["_SELF"] ?>" method="POST">
+        <form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
 
           <div style="width: 100%;  margin-top: 1rem;">
             <input class="input" type="email" name="email" placeholder="E-mail" required>
