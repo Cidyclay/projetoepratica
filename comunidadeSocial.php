@@ -1,4 +1,13 @@
-<?php $mostrar = false ?>
+<?php 
+$mostrar = false;
+$id = 1;
+
+$fp = fopen('publis.csv','r');
+
+    while(($row = fgetcsv($fp)) !== false) {
+        $id++;
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -21,35 +30,40 @@
          <php $nomeArquivo='publis.csv' ; $arquivo=file($nomeArquivo) ?>
 
             <form action="add_post.php" method="POST">
+                <input type="hidden" name="id" value="<?=$id;?>">
                 <input type="text" name="titulo" placeholder="Titulo*" required>
                 <input type="text" name="conteudo" placeholder="Conteudo*" required>
                 <input type="submit" name="criar" value="Criar" class="criar-butao">
             </form>
 
             <?php $fp = fopen('publis.csv', 'r') ?>
-            <?php while (($rom = fgetcsv($fp)) !== false) : ?>
-
+            <?php while (($row = fgetcsv($fp)) !== false) : ?>
                 <!-- só vai mostar "minhas publicaçoes" caso o usuario tenha alguma publicação -->
                 <?php if (!$mostrar) : ?>
                     <h2>Minhas Publicações</h2>
                 <?php $mostrar = true;
+                $id++;
                 endif ?>
                 
                     <div style=" text-align: center; width:500px">
                         <div>
-                            <h2 class="publicacao"><?= $rom[0] ?></h2>
+                            <h2 class="publicacao"><?= $row[1] ?></h2>
     
                         </div>
                         <div>
-                            <p class="publicacao"><?= $rom[1] ?></p>
+                            <p class="publicacao"><?= $row[2] ?></p>
     
                         </div>
                         <div>
-                            <p class="publicacao">Data da Publicação: <?= $rom[2] ?></p>
+                            <p class="publicacao">Data da Publicação: <?= $row[3] ?></p>
     
                         </div>
                 </div>
-
+                <a href="/edit_post.php?id=<?=$row[0]?>"> Editar</a>
+                <form action="delete_post.php" method="GET" onsubmit="return confirm ('VOCÊ ESTÁ CERTO DISSO?')">
+                    <input type="hidden" name="id" value="<?= $row[0] ?>">
+                    <button>Excluir publicação</button>
+                </form>
             <?php endwhile ?>
 
     </div>
