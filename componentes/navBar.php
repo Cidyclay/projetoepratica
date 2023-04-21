@@ -23,7 +23,7 @@
         <h1 id='texto'>$texto</h1>
         
         <div>
-            <a class='iconesNavBar'  href='contaSocial.php'>
+            <a class='iconesNavBar'  href='login.php'>
                 <i class='icones material-symbols-outlined'>person</i>
             </a>
         </div>

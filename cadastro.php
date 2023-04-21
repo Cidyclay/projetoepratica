@@ -62,18 +62,18 @@
         }
     </style>
 </head>
+<!-- ### armazenando ### -->
 <?php
-### armazenando ###
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $nome = $_POST["nome"];
     $usuario = $_POST["usuario"];
     $senha = $_POST["senha"];
     $confirmarSenha = $_POST["confirmarSenha"];
-}
-
+    $fp = fopen("users.csv", "r");
+} 
 ?>
-
+<!-- ### -->
 <body>
     <?php include "componentes/navBar.php" ?>
     <?= navBar("Conta") ?>
@@ -100,11 +100,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input class="input" type="password" name="confirmarSenha" placeholder="Confirmar Senha">
 
             </div>
-
-            <button>Cadastrar</button>
+            <input type="submit" value="Cadastrar">
             <p><a href="contaSocial.php">Já é cadastrado? Login</a></p>
         </form>
+        <?php if ($fp):?>
+            <!-- ### Verificação de integridade ### -->
+                <?php while (($row = fgetcsv($fp)) !== false):?>
+                    <?php if ($row[0] == $email):?>
+                        <p>Email já utilizado.</p>
+                        <?php
+                            fclose($fp); 
+                            exit();
+                        ?>
+                    <?php elseif($row[2] == $usuario):?>
+                        <p>Usuário já utilizado</p>
+                        <?php
+                            fclose($fp); 
+                            exit();
+                        ?>
+                    <?php endif?>
+                <?php endwhile?>
+                <?php if ($senha != $confirmarSenha):?>
+                    <p>As senhas estão diferentes, por favor, digite-as iguais</p>
+                    <?php
+                        fclose($fp); 
+                        exit();
+                        ?>
+                <?php endif?>
+                <!-- ### -->
 
+                <!-- ### Salvando ### -->      
+                <?php 
+                    fclose($fp);
+                    $fp = fopen("users.csv", "a");
+                    fputcsv($fp,[$email,$nome,$usuario,$senha]);
+                    fclose($fp);
+                    header('Location: contaSocial.php', true, 302);
+                    exit();
+                ?>
+                <!-- ### -->
+            <?php endif?>
     </div>
 
 </body>
