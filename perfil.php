@@ -11,12 +11,15 @@
     <title>MGT</title>
 
 </head>
+
 <body>
     <?php include "componentes/navBar.php" ?>
     <?= navBar("Perfil") ?>
     <div class="divBody" style="height: 100%; width: 97vw; background-color: rgb(52, 2, 98);">
-        <a href="/logOut.php">Sair</a>
+        <a href="/logOut.php">Sair</a> <br>
+        <a href="/removerAccount.php">Excluir conta</a>
     </div>
+
 </body>
 
 </html>
