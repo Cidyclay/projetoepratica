@@ -57,8 +57,12 @@ $fp = fopen('publis.csv','r');
     
                         </div>
                         <div>
-                            <p class="publicacao">Data da Publicação: <?= $row[3] ?></p>
+                            <p class="publicacao">Última atualização: <?= $row[3] ?></p>
     
+                        </div>
+
+                        <div>
+                            <p class="publicacao">Criador: <?= $row[4] ?></p>
                         </div>
                 </div>
                 <a href="/edit_post.php?id=<?=$row[0]?>"> Editar</a>
