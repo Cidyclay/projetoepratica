@@ -1,7 +1,6 @@
 <?php 
     session_start();
     $logado = false;
-    $logadoP = false;
     $fp = fopen("users.csv", "r");
 
     if ($fp) {
