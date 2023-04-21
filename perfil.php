@@ -11,15 +11,11 @@
     <title>MGT</title>
 
 </head>
-<?php 
-    require "auth.php";
-?>
 <body>
     <?php include "componentes/navBar.php" ?>
-    <?= navBar("Jogos") ?>
+    <?= navBar("Perfil") ?>
     <div class="divBody" style="height: 100%; width: 97vw; background-color: rgb(52, 2, 98);">
-        <?= $_SESSION["user"]?>
-
+        <a href="/logOut.php">Sair</a>
     </div>
 </body>
 

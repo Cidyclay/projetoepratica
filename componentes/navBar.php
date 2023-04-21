@@ -3,7 +3,7 @@
         return "
         <aside>
             <nav>
-                <a href='contaSocial.php'>
+                <a href='login.php'>
                     <img id='imgNavBar' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh-Bn7-KSnRyMXgvNe72nE1qh9kTxrBHM2cQ&usqp=CAU' alt='Perfil'>
                 </a>
 

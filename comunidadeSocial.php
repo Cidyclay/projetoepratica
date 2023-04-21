@@ -20,14 +20,16 @@ $fp = fopen('publis.csv','r');
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>MGT</title>
 </head>
-
+<?php 
+    require "auth.php";
+?>
 <body>
     <?php include "componentes/navBar.php" ?>
     <?= navBar("Comunidade") ?>
     <div class="divBody" style="margin-left: 30%;">
         <h1>Criar Publicações</h1>
 
-         <php $nomeArquivo='publis.csv' ; $arquivo=file($nomeArquivo) ?>
+        <!--- <php $nomeArquivo='publis.csv' ; $arquivo=file($nomeArquivo) ?> ---->
 
             <form action="add_post.php" method="POST">
                 <input type="hidden" name="id" value="<?=$id;?>">
@@ -41,7 +43,7 @@ $fp = fopen('publis.csv','r');
                 <!-- só vai mostar "minhas publicaçoes" caso o usuario tenha alguma publicação -->
                 <?php if (!$mostrar) : ?>
                     <h2>Minhas Publicações</h2>
-                <?php $mostrar = true;
+                <?php $mostrar = true; 
                 $id++;
                 endif ?>
                 

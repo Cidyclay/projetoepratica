@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             </div>
             <input type="submit" value="Cadastrar">
-            <p><a href="contaSocial.php">Já é cadastrado? Login</a></p>
+            <p><a href="login.php">Já é cadastrado? Login</a></p>
         </form>
         <?php if ($fp):?>
             <!-- ### Verificação de integridade ### -->
@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $fp = fopen("users.csv", "a");
                     fputcsv($fp,[$email,$nome,$usuario,$senha]);
                     fclose($fp);
-                    header('Location: contaSocial.php', true, 302);
+                    header('Location: login.php', true, 302);
                     exit();
                 ?>
                 <!-- ### -->

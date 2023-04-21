@@ -73,9 +73,11 @@
     align-items: center;
   }
 </style>
-
+<?php
+  require "authPerfil.php";
+?>
 <body>
-  <?php include "componentes/navBar.php" ?>
+<?php include "componentes/navBar.php";?>
   <?= navBar("Conta") ?>
   <div class="divBody" style=" display:flex; flex-direction: column;  justify-content: center; align-items: center; width: 97vw; height: 100%;">
 

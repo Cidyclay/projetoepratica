@@ -14,7 +14,7 @@
 
     <h1>Criar Publicações</h1>
 
-    <php $nomeArquivo='publis.csv' ; $arquivo=file($nomeArquivo) ?>
+    <!--  <php $nomeArquivo='publis.csv' ; $arquivo=file($nomeArquivo) ?>-->
 
         <form action="add_post.php" method="POST">
             <input type="text" name="titulo" placeholder="Titulo*" required>
