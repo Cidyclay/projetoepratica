@@ -11,12 +11,14 @@
     <title>MGT</title>
 
 </head>
-
+<?php 
+    require "auth.php";
+?>
 <body>
     <?php include "componentes/navBar.php" ?>
     <?= navBar("Jogos") ?>
     <div class="divBody" style="height: 100%; width: 98vw; background-color: rgb(52, 2, 98);">
-       
+        <?= $_SESSION["user"]?>
 
     </div>
 </body>
