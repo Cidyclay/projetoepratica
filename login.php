@@ -112,7 +112,6 @@
           $senha = $_POST["senha"];
           while (($row = fgetcsv($fp)) !== false) {
             if ($email == $row[0] && $senha == $row[3]) {
-              session_start();
               $_SESSION["user"] = $email;
               header("location: comunidadeSocial.php");
               exit();

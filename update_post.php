@@ -10,11 +10,14 @@ $dataPublicacao = date("F j, Y, H:i ");
 $arquivoTemporario = tempnam('.','');
 
 
+require "auth.php";
+$criador =  $_SESSION["user"];
+
 $original = fopen('publis.csv', 'r');
 $temp = fopen($arquivoTemporario,'w');
 while(($row = fgetcsv($original)) !== false) {
     if($row[0] == $id) {
-        fputcsv($temp, [$id, $titulo, $conteudo, $dataPublicacao]);
+        fputcsv($temp, [$id, $titulo, $conteudo, $dataPublicacao,  $criador]);
         continue;
     }
     fputcsv($temp, $row);

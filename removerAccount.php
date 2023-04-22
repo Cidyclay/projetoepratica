@@ -20,10 +20,6 @@ rename($tempName, 'users.csv');
 
 fclose($temp);
 fclose($orig);
-
-
-session_start();
-
 session_destroy();
 
 header('location:cadastro.php');

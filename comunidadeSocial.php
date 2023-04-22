@@ -1,5 +1,4 @@
 <?php
-require "auth.php";
 $mostrar = false;
 $id = 1;
 
@@ -68,7 +67,7 @@ require "auth.php";
                     <p class="publicacao">Criador: <?= $row[4] ?></p>
                 </div>
             </div>
-            <?php if ($row[4] == $_SESSION["user"]) : ?>
+            <?php if (isset($_SESSION["user"]) && ($row[4] == $_SESSION["user"])) : ?>
                 <a href="/edit_post.php?id=<?= $row[0] ?>"> Editar</a>
                 <form action="delete_post.php" method="GET" onsubmit="return confirm ('VOCÊ ESTÁ CERTO DISSO?')">
                     <input type="hidden" name="id" value="<?= $row[0] ?>">

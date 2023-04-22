@@ -7,7 +7,7 @@
     if ($fp) {
         
         while (($row = fgetcsv($fp)) !== false) {
-            if ($row[0] == $_SESSION["user"]) {
+            if ( isset($_SESSION["user"]) && $row[0] == $_SESSION["user"] ) {
                 $logado = true;
                 break;
             }
