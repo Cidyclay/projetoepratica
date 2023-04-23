@@ -17,7 +17,8 @@
     <?= navBar("Perfil") ?>
     <div class="divBody" style="height: 100%; width: 97vw; background-color: rgb(52, 2, 98);">
         <a href="/logOut.php">Sair</a> <br>
-        <a href="/removerAccount.php">Excluir conta</a>
+        <a href="/removerAccount.php">Excluir conta</a> <br>
+        <a href="/edit_user.php">Atualizar Dados</a>
     </div>
 
 </body>
