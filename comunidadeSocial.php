@@ -49,7 +49,7 @@ require "auth.php";
                 $id++;
             endif ?>
 
-            <div style=" text-align: center; width:500px">
+            <div style=" text-align: center; width:500px;">
                 <div>
                     <h2 class="publicacao"><?= $row[1] ?></h2>
 
