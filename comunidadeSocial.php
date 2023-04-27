@@ -19,6 +19,23 @@ while (($row = fgetcsv($fp)) !== false) {
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>MGT</title>
+
+
+    <style>
+
+    a{
+    color: wite;
+    font-size: 25px;  
+    text-decoration: none;
+}
+
+    button{
+        
+    }
+
+    </style>
+
+
 </head>
 <?php
 require "auth.php";
