@@ -1,7 +1,7 @@
 <?php
 
 $id = $_GET['id'];
-$fp = fopen('publis.csv','r');
+$fp = fopen('../../csv/publis.csv','r');
 $arrayDados = [];
 
 while(($row = fgetcsv($fp)) !== false) {
@@ -10,9 +10,9 @@ while(($row = fgetcsv($fp)) !== false) {
         break;
     }
 }
-
+fclose($fp);
 if(sizeof($arrayDados) == 0) {
-    header('location: comunidadeSocial.php');
+    header('location: /src/comunidade.php', true, 302);
     exit();
 }
 ?>
@@ -32,5 +32,6 @@ if(sizeof($arrayDados) == 0) {
                 <input type="text" name="conteudo" placeholder="Conteudo*" value="<?=$arrayDados[2]?>">
                 <button>Salvar</button>
             </form>
+            <button><a href="../comunidade.php">Voltar</a></button>
 </body>
 </html>

@@ -1,3 +1,49 @@
+<!-- ### armazenando ### -->
+<?php
+    $dadosValidos = true;
+    $checkEmail = true;
+    $checkUsuario = true;
+    $senhasIguais = false;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $nome = $_POST["nome"];
+    $usuario = $_POST["usuario"];
+    $senha = $_POST["senha"];
+    $confirmarSenha = $_POST["confirmarSenha"];
+
+    ##verificando os dados ##
+    if (isset($email) && isset($nome) && isset($usuario) && isset($senha) && isset($confirmarSenha)) {
+        $fp = fopen("../csv/users.csv", "r");
+        if ($fp) {
+            while (($row = fgetcsv($fp)) !== false) {
+                if ($email == $row[0]) {
+                    $checkEmail = false;
+                    $dadosValidos = false;
+                    fclose($fp);
+                    break;
+                } else if ($usuario == $row[2]) {
+                    $checkUsuario = false;
+                    $dadosValidos = false;
+                    fclose($fp);
+                    break;
+                }
+            }
+            if ($senha != $confirmarSenha) {
+                $senhasIguais = true;
+                $dadosValidos = false;
+                fclose($fp);
+            }
+            if ($dadosValidos) {
+                fclose($fp);
+                $fpADD = fopen("../csv/users.csv", "a");
+                fputcsv($fpADD, [$email, $nome, $usuario, $senha]);
+                fclose($fpADD);
+                header("location:/src/login.php");
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,7 +52,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/componentes/navBar.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/style/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>MGT</title>
 
@@ -62,22 +108,9 @@
         }
     </style>
 </head>
-<!-- ### armazenando ### -->
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $nome = $_POST["nome"];
-    $usuario = $_POST["usuario"];
-    $senha = $_POST["senha"];
-    $confirmarSenha = $_POST["confirmarSenha"];
-    $fp = fopen("users.csv", "r");
-}
-?>
-<!-- ### -->
-
 <body>
-    <?php include "componentes/navBar.php" ?>
-    <?= navBar("Conta") ?>
+    <?php include "../componentes/navBar.php"?>
+    <?= navBar("Conta", "/user/perfil.php", "/index.php", "comunidade.php", "jogos.php") ?>
     <div class="divBody">
         <form id="formularioCadastro" action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
             <h1 class="TituloCadastro" style="border-bottom: 2px solid; border-color: #2d2969; font-size: 2em;">Cadastro</h1>
@@ -104,45 +137,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="submit" value="Cadastrar">
             <p><a href="login.php">Já é cadastrado? Login</a></p>
         </form>
-
-        <?php if (isset($fp) && $fp) : ?>
-            <!-- ### Verificação de integridade ### -->
-            <?php while (($row = fgetcsv($fp)) !== false) : ?>
-                <?php if ($row[0] == $email) : ?>
-                    <p>Email já utilizado.</p>
-                    <?php
-                    fclose($fp);
-                    exit();
-                    ?>
-                <?php elseif ($row[2] == $usuario) : ?>
-                    <p>Usuário já utilizado</p>
-                    <?php
-                    fclose($fp);
-                    exit();
-                    ?>
-                <?php endif ?>
-            <?php endwhile ?>
-            <?php if ($senha != $confirmarSenha) : ?>
-                <p>As senhas estão diferentes, por favor, digite-as iguais</p>
-                <?php
-                fclose($fp);
-                exit();
-                ?>
-            <?php endif ?>
-            <!-- ### -->
-
-            <!-- ### Salvando ### -->
-            <?php
-            fclose($fp);
-            $fp = fopen("users.csv", "a");
-            fputcsv($fp, [$email, $nome, $usuario, $senha]);
-            fclose($fp);
-            // header('location:login.php', true, 302);
-
-            //ATENÇÂo: comentei esse header, por enquanto,  pq ta dando "erro" e não ta funcionando corretamente  (ass: erick)
-            exit();
-            ?>
-        <?php endif ?>
+        <?php if (!$dadosValidos):?>    
+            <?php if(!$checkEmail):?>
+                <p class="pAviso">Email já em uso</p>
+            <?php elseif (!$checkUsuario):?>
+                <p class="pAviso">Usuario já em uso</p>
+            <?php elseif ($senhasIguais):?>
+                <p class="pAviso">As senhas devem ser iguais</p>
+            <?php endif?>
+        <?php endif?>
     </div>
 
 </body>
