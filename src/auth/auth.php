@@ -3,7 +3,7 @@
     if (isset($_SESSION["userEmail"])) {
         $parentDir = dirname(__DIR__);
         $filePath = $parentDir . '/users.csv';
-        $fp = fopen("C:\Users\aluno.lab03\Documents\GitHub\projetoepratica\csv\users.csv", "r");
+        $fp = fopen("C:\Users\aluno.biblioteca\Documents\GitHub\projetoepratica\csv\users.csv", "r");
         if ($fp) {
             while (($row = fgetcsv($fp)) !== false) {
                 if ($_SESSION["userEmail"] == $row[0]) {

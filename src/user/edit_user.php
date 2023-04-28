@@ -16,60 +16,99 @@ if ($fp) {
 rewind($fp);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $novoEmail = $_POST["email"];
-    $atualEmail = $dados[0];
+    if (isset($_POST["nome"])) {
+        
+        $email = $_SESSION["userEmail"];
+        $nome = $_POST["nome"];
+        $usuario = $dados[2];
+        $senha = $dados[3];
 
-    $nome = $_POST["nome"];
-
-    $novoUsuario = $_POST["usuario"];
-    $atualUsuario = $dados[2];
-
-    $senha = $_POST["senha"];
-    $confirmarSenha = $_POST["confirmarSenha"];
-
-    if (isset($nome) || isset($novoUsuario) || (isset($senha) && isset($confirmarSenha))) {
+        $fp = fopen("../../csv/users.csv", "r");
+            $tempnam = tempnam("../../csv", "");
+            $temp = fopen($tempnam, "w");
+            $fp = fopen("../../csv/users.csv", "r");
+            if ($fp && $temp) {
+                while (($row = fgetcsv($fp)) !== false) {
+                    if ($row[0] == $email) {
+                        fputcsv($temp, [$email, $nome, $usuario, $senha]);
+                        continue;
+                    }
+                    fputcsv($temp, $row);
+                }
+                fclose($temp);
+                fclose($fp);
+                rename("../../csv/" . basename($tempnam), "../../csv/users.csv");
+                header("location:/src/user/perfil.php", true, 302);
+            }
+    } else if (isset($_POST["usuario"])) {
+        
+        $email = $_SESSION["userEmail"];
+        $nome = $dados[1];
+        $usuario =$_POST["usuario"];
+        $senha = $dados[3];
         $fp = fopen("../../csv/users.csv", "r");
         if ($fp) {
             ## verificando usuario
             while (($row = fgetcsv($fp)) !== false) {
-                if ($row[0] != $_SESSION["userEmail"] && $row[2] == $novoUsuario) {
+                if ($row[0] != $email && $row[2] == $usuario) {
                     $checkUsuario = false;
                     $dadosValidos = false;
                     break;
                 }
             }
-            ## verificando senhas 
+            fclose($fp);
+        }
+        if ($dadosValidos) {
+            $tempnam = tempnam("../../csv", "");
+            $temp = fopen($tempnam, "w");
+            $fp = fopen("../../csv/users.csv", "r");
+            if ($fp && $temp) {
+                while (($row = fgetcsv($fp)) !== false) {
+                    if ($row[0] == $email) {
+                        fputcsv($temp, [$email, $nome, $usuario, $senha]);
+                        continue;
+                    }
+                    fputcsv($temp, $row);
+                }
+                fclose($temp);
+                fclose($fp);
+                rename("../../csv/" . basename($tempnam), "../../csv/users.csv");
+                header("location:/src/user/perfil.php", true, 302);
+            }
+        }
+        
+    } else if (isset($_POST["senha"])) {
+        
+        $email = $_SESSION["userEmail"];
+        $nome = $dados[1];
+        $usuario = $dados[2];
+        $senha = $_POST["senha"];
+        $confirmarSenha =$_POST["confirmarSenha"];
+        $fp = fopen("../../csv/users.csv", "r");
+        if ($fp) {
             if ($senha != $confirmarSenha) {
-                $senhasIguais = false;
                 $dadosValidos = false;
+                $senhasIguais = false;
             }
             fclose($fp);
         }
-    }
-    if ($dadosValidos) {
-        $tempnam = tempnam("../../csv", "");
-        $temp = fopen($tempnam, "w");
-        $fp = fopen("../../csv/users.csv", "r");
-        if ($fp && $temp) {
-            while (($row = fgetcsv($fp)) !== false) {
-                if ($row[0] == $_SESSION["userEmail"]) {
-                    if (isset($novoUsuario)) {
-                        fputcsv($temp, [$_SESSION["userEmail"], $row[1], $novoUsuario, $row[3]]);
-                        continue;
-                    } else if (isset($nome)) {
-                        fputcsv($temp, [$_SESSION["userEmail"], $nome, $row[2], $row[3]]);
-                        continue;
-                    } else if (isset($senha)) {
-                        fputcsv($temp, [$_SESSION["userEmail"], $row[1], $row[2], $senha]);
+        if ($dadosValidos) {
+            $tempnam = tempnam("../../csv", "");
+            $temp = fopen($tempnam, "w");
+            $fp = fopen("../../csv/users.csv", "r");
+            if ($fp && $temp) {
+                while (($row = fgetcsv($fp)) !== false) {
+                    if ($row[0] == $email) {
+                        fputcsv($temp, [$email, $nome, $usuario, $senha]);
                         continue;
                     }
+                    fputcsv($temp, $row);
                 }
-                fputcsv($temp, $row);
+                fclose($temp);
+                fclose($fp);
+                rename("../../csv/" . basename($tempnam), "../../csv/users.csv");
+                header("location:/src/user/perfil.php", true, 302);
             }
-            fclose($temp);
-            fclose($fp);
-            rename("../../csv/" . basename($tempnam), "../../csv/users.csv");
-            header("location:edit_user.php", true, 302);
         }
     }
 }
