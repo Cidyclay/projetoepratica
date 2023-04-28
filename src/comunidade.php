@@ -1,5 +1,5 @@
 <?php
-    require "../src/auth/auth.php";
+    require "auth/auth.php";
     $mostrar = false;
     $id = 1;
     $fp = fopen("../csv/publis.csv", 'r');

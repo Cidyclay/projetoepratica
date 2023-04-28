@@ -1,7 +1,9 @@
 <?php 
     session_start();
     if (isset($_SESSION["userEmail"])) {
-        $fp = fopen("../../csv/users.csv", "r");
+        $parentDir = dirname(__DIR__);
+        $filePath = $parentDir . '/users.csv';
+        $fp = fopen("C:\Users\aluno.lab03\Documents\GitHub\projetoepratica\csv\users.csv", "r");
         if ($fp) {
             while (($row = fgetcsv($fp)) !== false) {
                 if ($_SESSION["userEmail"] == $row[0]) {

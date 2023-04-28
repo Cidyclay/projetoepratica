@@ -1,8 +1,8 @@
 <?php 
+    $dadosValidos = true;
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $senha = $_POST["senha"];
-    $dadosValidos = true;
     if (isset($email) && isset($senha)) {
       $fp = fopen("../csv/users.csv", "r");
       if ($fp) {
@@ -17,7 +17,7 @@
           }
         }
         $dadosValidos = false;
-        if (!$dadosInvalidos) {
+        if (!$dadosValidos) {
           fclose($fp);
         }   
       }
@@ -124,7 +124,7 @@
             <button>Entrar</button>
           </div>
         </form>
-        <?php if (!$dadosInvalidos):?>
+        <?php if (!$dadosValidos):?>
           <p class="pAviso">Dados invalidos</p>
         <?php endif?>
         <p><a href="cadastro.php">Faça seu cadastro aqui!</a></p>
