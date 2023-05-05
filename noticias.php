@@ -33,7 +33,13 @@ function exibirNoticias()
         if ($noticia[3] != '') {
             echo '<div class="video-container">';
             echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $noticia[3] . '" frameborder="0" allowfullscreen></iframe>';
-            echo '</div>';
+            echo '<p>' . $noticia[3] .'</p>';
+            echo '<form action="delete_post.php" method="POST">
+                    <input type="hidden" name="id" value ="'.$noticia[3].'">
+            <button>Deletar</button>
+        </form>';
+        
+                echo '</div>';
         }
     }
 }

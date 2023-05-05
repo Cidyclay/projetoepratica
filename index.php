@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 	// Caso tenha uma "nova" notícia o arquivo CSV será aberto
 	// então as informações dela !"não serão acessadas." :)
 
-
+		//Coloquei o $id da postagem no final, pra não destroçar o código todo, :)
 	$nova_noticia = [$titulo, $imagem, $texto, $video_id, $link];
 	$fp = fopen('noticias.csv', 'a');
 	fputcsv($fp, $nova_noticia);
