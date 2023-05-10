@@ -1,10 +1,9 @@
 <?php
     require "auth/auth.php";
     $mostrar = false;
-    $id = 1;
+    $id = uniqid();
     $fp = fopen("../csv/publis.csv", 'r');
     while (($row = fgetcsv($fp)) !== false) {
-        $id++;
     }
     fclose($fp);
 ?>
@@ -42,7 +41,6 @@
             <?php if (!$mostrar) : ?>
                 <h2> Publicações</h2>
             <?php $mostrar = true;
-                $id++;
             endif ?>
 
             <div style=" text-align: center; width:500px">

@@ -7,7 +7,7 @@ date_default_timezone_set("America/Sao_Paulo");
 $dataPublicacao = date("F j, Y, H:i ");
 
 // vai receber o conteúdo original com a modificação
-$arquivoTemporario = tempnam("../../csv", "");
+$arquivoTemporario = tempnam("../../csv/", "");
 
 $criador =  $_SESSION["userEmail"];
 
