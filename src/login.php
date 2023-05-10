@@ -1,3 +1,30 @@
+<?php 
+    $dadosValidos = true;
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+    if (isset($email) && isset($senha)) {
+      $fp = fopen("../csv/users.csv", "r");
+      if ($fp) {
+        while (($row = fgetcsv($fp)) !== false) {
+          if ($row[0] == $email && $row[3] == $senha) {
+            session_start();
+            $_SESSION["userEmail"] = $row[0];
+            $_SESSION["userUsuario"] = $row[2];
+            fclose($fp);
+            header("location:/src/comunidade.php", true, 302);
+            break;
+          }
+        }
+        $dadosValidos = false;
+        if (!$dadosValidos) {
+          fclose($fp);
+        }   
+      }
+    }
+  }
+  
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,9 +33,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/componentes/navBar.css">
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="/style/index.css">
   <title>MGT</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <style>
   #formularioLogin {
@@ -73,12 +100,9 @@
     align-items: center;
   }
 </style>
-<?php
-  require "authPerfil.php";
-?>
 <body>
-<?php include "componentes/navBar.php";?>
-  <?= navBar("Conta") ?>
+  <?php include "../componentes/navBar.php"?>
+  <?= navBar("Login", "user/perfil.php", "/index.php", "comunidade.php", "jogos.php") ?>
   <div class="divBody" style=" display:flex; flex-direction: column;  justify-content: center; align-items: center; width: 97vw; height: 100%;">
 
     <div id="formularioLogin">
@@ -87,7 +111,7 @@
 
         <h3 id="h3Login" style="border-bottom: 2px solid; border-color: #2d2969; font-size: 1.5em;">Faça o login</h3>
         
-        <form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
+        <form action="<?= $_SERVER["PHP_SELF"]?>" method="POST">
 
           <div style="width: 100%;  margin-top: 1rem;">
             <input class="input" type="email" name="email" placeholder="E-mail" required>
@@ -96,39 +120,15 @@
           <div style="width: 100%;  margin-top: 1rem;">
             <input class="input" type="password" name="senha" placeholder="Senha" required>
           </div>
-
           <div style="margin-top: 10%; display: flex; justify-content: center;">
             <button>Entrar</button>
           </div>
         </form>
+        <?php if (!$dadosValidos):?>
+          <p class="pAviso">Dados invalidos</p>
+        <?php endif?>
+        <p><a href="cadastro.php">Faça seu cadastro aqui!</a></p>
       </div>
-
-      <?php
-      $checkConta = true;
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $fp = fopen("users.csv", "r");
-        if ($fp) {
-          $email = $_POST["email"];
-          $senha = $_POST["senha"];
-          while (($row = fgetcsv($fp)) !== false) {
-            if ($email == $row[0] && $senha == $row[3]) {
-              $_SESSION["user"] = $email;
-              header("location: comunidadeSocial.php");
-              exit();
-            }
-          }
-          $checkConta = false;
-        }
-      }
-      ?>
-      <div>
-        <?php if(!$checkConta):?>
-          <p style="text-align: center; color:red;">Dados invalidos!</p>
-          <?php endif?>
-        <p><a href="cadastro.php">Crie sua conta aqui!</a></p>
-      </div>
-    </div>
   </div>
 </body>
-
 </html>
