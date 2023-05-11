@@ -13,9 +13,6 @@
 
 </head>
 <style>
-    body{
-       
-    }
     
     h1{
         text-align: center;
@@ -71,6 +68,12 @@
             </a>
             <a href="https://store.steampowered.com/app/39210/FINAL_FANTASY_XIV_Online/" target="_blank">
                 <img src="https://image.api.playstation.com/vulcan/img/rnd/202106/2111/iQWooonIcfoudXQk6MpCTbpJ.jpg" alt="final fantasy" width="600" height="300">
+            </a>
+            <a class=img1 href="https://overwatch.blizzard.com/pt-br/" target="_blank">
+                <img src="https://s2.glbimg.com/PNJER51BOnQnITDIcY5imE75mN8=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2019/0/B/l8KwmZRfW41RBYwagf6A/6.jpg" alt="over"  width="600" height="300">
+            </a>
+            <a href="https://www.ea.com/pt-br/games/fifa/fifa-21"  target="_blank">
+                <img src="https://s2.glbimg.com/f5UpJFXD2wQR3-HMNa927HxTd7c=/0x0:1920x1080/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2020/r/7/mSrPjAQTq0uFHNHiBjpQ/fifa-21-intros.jpg" alt="fifa" width="600" height="300">
             </a>
         </div>
     </div>
