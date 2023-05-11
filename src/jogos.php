@@ -75,6 +75,9 @@
             <a href="https://www.ea.com/pt-br/games/fifa/fifa-21"  target="_blank">
                 <img src="https://s2.glbimg.com/f5UpJFXD2wQR3-HMNa927HxTd7c=/0x0:1920x1080/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2020/r/7/mSrPjAQTq0uFHNHiBjpQ/fifa-21-intros.jpg" alt="fifa" width="600" height="300">
             </a>
+            <a href="https://www.rockstargames.com/br/gta-v" target="_blank">
+                <img src="https://assets.xboxservices.com/assets/0b/17/0b179504-412d-4af7-9e00-3e3d92633577.jpg?n=GTA-V_GLP-Page-Hero-1084_1920x1080.jpg" alt="gtav" width="600" height="300">
+            </a>
         </div>
     </div>
 
