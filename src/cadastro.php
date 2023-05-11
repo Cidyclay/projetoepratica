@@ -1,45 +1,27 @@
 <!-- ### armazenando ### -->
 <?php
-    $dadosValidos = true;
-    $checkEmail = true;
-    $checkUsuario = true;
-    $senhasIguais = false;
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $nome = $_POST["nome"];
-    $usuario = $_POST["usuario"];
-    $senha = $_POST["senha"];
-    $confirmarSenha = $_POST["confirmarSenha"];
-
-    ##verificando os dados ##
-    if (isset($email) && isset($nome) && isset($usuario) && isset($senha) && isset($confirmarSenha)) {
-        $fp = fopen("../csv/users.csv", "r");
-        if ($fp) {
-            while (($row = fgetcsv($fp)) !== false) {
-                if ($email == $row[0]) {
-                    $checkEmail = false;
-                    $dadosValidos = false;
-                    fclose($fp);
-                    break;
-                } else if ($usuario == $row[2]) {
-                    $checkUsuario = false;
-                    $dadosValidos = false;
-                    fclose($fp);
-                    break;
-                }
-            }
-            if ($senha != $confirmarSenha) {
-                $senhasIguais = true;
-                $dadosValidos = false;
-                fclose($fp);
-            }
-            if ($dadosValidos) {
-                fclose($fp);
-                $fpADD = fopen("../csv/users.csv", "a");
-                fputcsv($fpADD, [$email, $nome, $usuario, $senha]);
-                fclose($fpADD);
-                header("location:/src/login.php");
-            }
+require 'config.php';
+if(isset($_POST['submit'])) {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $senha = $_POST['senha'];
+    $confirmarSenha = $_POST['confirmarSenha'];
+    $duplicado = mysqli_query($conn, "SELECT * FROM users WHERE user_username='$username' OR user_email = '$email'");
+    if(mysqli_num_rows($duplicate) > 0) {
+        echo
+        "<script> alert('Usuário ou E-mail já utilizado' </script>";
+    }
+    else {
+        if($senha == $confirmarsenha) {
+            $insert = "INSERT INTO users VALUES('','$nome','$email','$username','$senha')";
+            mysqli_query($conn,$insert);
+            echo
+            "<script> alert('Registrado com Sucesso' </script>";
+        }
+        else {
+            echo
+            "<script> alert('As senhas não coincidem' </script>";
         }
     }
 }
@@ -115,15 +97,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form id="formularioCadastro" action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
             <h1 class="TituloCadastro" style="border-bottom: 2px solid; border-color: #2d2969; font-size: 2em;">Cadastro</h1>
             <div>
-                <input class="input" type="email" name="email" placeholder="E-mail" required>
+            <input class="input" type="text" name="nome" placeholder="Nome" required>
 
             </div>
             <div>
-                <input class="input" type="text" name="nome" placeholder="Nome" required>
-
+            <input class="input" type="email" name="email" placeholder="E-mail" required>
             </div>
             <div>
-                <input class="input" type="text" name="usuario" placeholder="Usuário" required>
+                <input class="input" type="text" name="username" placeholder="Usuário" required>
 
             </div>
             <div>
@@ -134,18 +115,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input class="input" type="password" name="confirmarSenha" placeholder="Confirmar Senha">
 
             </div>
-            <input type="submit" value="Cadastrar">
+            <input type="submit" name="submit" value="Cadastrar">
             <p><a href="login.php">Já é cadastrado? Login</a></p>
         </form>
-        <?php if (!$dadosValidos):?>    
-            <?php if(!$checkEmail):?>
-                <p class="pAviso">Email já em uso</p>
-            <?php elseif (!$checkUsuario):?>
-                <p class="pAviso">Usuario já em uso</p>
-            <?php elseif ($senhasIguais):?>
-                <p class="pAviso">As senhas devem ser iguais</p>
-            <?php endif?>
-        <?php endif?>
     </div>
 
 </body>
