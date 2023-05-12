@@ -1,29 +1,31 @@
 <?php 
-    $dadosValidos = true;
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-    if (isset($email) && isset($senha)) {
-      $fp = fopen("../csv/users.csv", "r");
-      if ($fp) {
-        while (($row = fgetcsv($fp)) !== false) {
-          if ($row[0] == $email && $row[3] == $senha) {
-            session_start();
-            $_SESSION["userEmail"] = $row[0];
-            $_SESSION["userUsuario"] = $row[2];
-            fclose($fp);
-            header("location:/src/comunidade.php", true, 302);
-            break;
-          }
-        }
-        $dadosValidos = false;
-        if (!$dadosValidos) {
-          fclose($fp);
-        }   
-      }
+require 'config.php';
+if(!empty($_SESSION['id'])) {
+  header("Location:/projetoepratica/src/comunidade.php");
+}
+if(isset($_POST["submit"])) {
+  $usuarioemail = $_POST['usuarioemail'];
+  $senha = $_POST['senha'];
+  $resultado = mysqli_query($conn,"SELECT * FROM users WHERE user_username ='$usuarioemail' OR user_email = '$usuarioemail'");
+  $row = mysqli_fetch_assoc($resultado);
+  if(mysqli_num_rows($resultado) > 0) {
+    if($senha == $row['user_password']) {
+      $_SESSION["login"] = true;
+      $_SESSION["id"] = $row["user_id"];
+      header("Location:/projetoepratica/src/comunidade.php", true, 302);
+    }
+    else {
+      echo
+      "<script> alert('Senha Incorreta'); </script>";
     }
   }
-  
+  else {
+    echo
+    "<script> alert('Usuário não cadastrado'); </script>";
+  }
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -114,19 +116,17 @@
         <form action="<?= $_SERVER["PHP_SELF"]?>" method="POST">
 
           <div style="width: 100%;  margin-top: 1rem;">
-            <input class="input" type="email" name="email" placeholder="E-mail" required>
+            <input class="input" type="text" name="usuarioemail" placeholder="Usuário ou E-mail" required>
           </div>
 
           <div style="width: 100%;  margin-top: 1rem;">
             <input class="input" type="password" name="senha" placeholder="Senha" required>
           </div>
           <div style="margin-top: 10%; display: flex; justify-content: center;">
-            <button>Entrar</button>
+          <input type="submit" name="submit" value="Entrar">
           </div>
         </form>
-        <?php if (!$dadosValidos):?>
-          <p class="pAviso">Dados invalidos</p>
-        <?php endif?>
+
         <p><a href="cadastro.php">Faça seu cadastro aqui!</a></p>
       </div>
   </div>

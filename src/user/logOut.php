@@ -1,4 +1,6 @@
 <?php 
-    session_start();
-    session_destroy();
-    header("location:/src/login.php", true, 302);
+require '../config.php';
+$_SESSION=[];
+session_unset();
+session_destroy();
+header("location: ../login.php", true, 302);

@@ -1,5 +1,5 @@
 <?php
-    require "auth/auth.php";
+    require 'config.php';
     $mostrar = false;
     $id = uniqid();
     $fp = fopen("../csv/publis.csv", 'r');

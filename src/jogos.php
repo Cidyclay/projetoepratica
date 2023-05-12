@@ -1,4 +1,4 @@
-<?php require "auth/auth.php"?>
+<?php require "config.php"?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

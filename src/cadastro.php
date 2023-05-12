@@ -1,6 +1,9 @@
 <!-- ### armazenando ### -->
 <?php
 require 'config.php';
+if(!empty($_SESSION['id'])) {
+    header("Location:/projetoepratica/src/comunidade.php");
+}
 if(isset($_POST['submit'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -8,20 +11,20 @@ if(isset($_POST['submit'])) {
     $senha = $_POST['senha'];
     $confirmarSenha = $_POST['confirmarSenha'];
     $duplicado = mysqli_query($conn, "SELECT * FROM users WHERE user_username='$username' OR user_email = '$email'");
-    if(mysqli_num_rows($duplicate) > 0) {
+    if(mysqli_num_rows($duplicado) > 0) {
         echo
-        "<script> alert('Usuário ou E-mail já utilizado' </script>";
+        "<script> alert('Usuário ou E-mail já utilizado'); </script>";
     }
     else {
-        if($senha == $confirmarsenha) {
-            $insert = "INSERT INTO users VALUES('','$nome','$email','$username','$senha')";
+        if($senha == $confirmarSenha) {
+            $insert = "INSERT INTO users VALUES('','$nome','$email','$username','$senha','com')";
             mysqli_query($conn,$insert);
             echo
-            "<script> alert('Registrado com Sucesso' </script>";
+            "<script> alert('Registrado com Sucesso'); </script>";
         }
         else {
             echo
-            "<script> alert('As senhas não coincidem' </script>";
+            "<script> alert('As senhas não coincidem'); </script>";
         }
     }
 }

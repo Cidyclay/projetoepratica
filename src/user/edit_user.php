@@ -1,117 +1,7 @@
 <?php
-require "../auth/auth.php";
-$checkUsuario = true;
-$dadosValidos = true;
-$senhasIguais = true;
-$dados = [];
-$fp = fopen("../../csv/users.csv", "r");
-if ($fp) {
-    while (($row = fgetcsv($fp)) !== false) {
-        if ($row[0] == $_SESSION["userEmail"]) {
-            $dados = $row;
-            break;
-        }
-    }
-}
-rewind($fp);
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["nome"])) {
-        
-        $email = $_SESSION["userEmail"];
-        $nome = $_POST["nome"];
-        $usuario = $dados[2];
-        $senha = $dados[3];
-
-        $fp = fopen("../../csv/users.csv", "r");
-            $tempnam = tempnam("../../csv", "");
-            $temp = fopen($tempnam, "w");
-            $fp = fopen("../../csv/users.csv", "r");
-            if ($fp && $temp) {
-                while (($row = fgetcsv($fp)) !== false) {
-                    if ($row[0] == $email) {
-                        fputcsv($temp, [$email, $nome, $usuario, $senha]);
-                        continue;
-                    }
-                    fputcsv($temp, $row);
-                }
-                fclose($temp);
-                fclose($fp);
-                rename("../../csv/" . basename($tempnam), "../../csv/users.csv");
-                header("location:/src/user/perfil.php", true, 302);
-            }
-    } else if (isset($_POST["usuario"])) {
-        
-        $email = $_SESSION["userEmail"];
-        $nome = $dados[1];
-        $usuario =$_POST["usuario"];
-        $senha = $dados[3];
-        $fp = fopen("../../csv/users.csv", "r");
-        if ($fp) {
-            ## verificando usuario
-            while (($row = fgetcsv($fp)) !== false) {
-                if ($row[0] != $email && $row[2] == $usuario) {
-                    $checkUsuario = false;
-                    $dadosValidos = false;
-                    break;
-                }
-            }
-            fclose($fp);
-        }
-        if ($dadosValidos) {
-            $tempnam = tempnam("../../csv", "");
-            $temp = fopen($tempnam, "w");
-            $fp = fopen("../../csv/users.csv", "r");
-            if ($fp && $temp) {
-                while (($row = fgetcsv($fp)) !== false) {
-                    if ($row[0] == $email) {
-                        fputcsv($temp, [$email, $nome, $usuario, $senha]);
-                        continue;
-                    }
-                    fputcsv($temp, $row);
-                }
-                fclose($temp);
-                fclose($fp);
-                rename("../../csv/" . basename($tempnam), "../../csv/users.csv");
-                header("location:/src/user/perfil.php", true, 302);
-            }
-        }
-        
-    } else if (isset($_POST["senha"])) {
-        
-        $email = $_SESSION["userEmail"];
-        $nome = $dados[1];
-        $usuario = $dados[2];
-        $senha = $_POST["senha"];
-        $confirmarSenha =$_POST["confirmarSenha"];
-        $fp = fopen("../../csv/users.csv", "r");
-        if ($fp) {
-            if ($senha != $confirmarSenha) {
-                $dadosValidos = false;
-                $senhasIguais = false;
-            }
-            fclose($fp);
-        }
-        if ($dadosValidos) {
-            $tempnam = tempnam("../../csv", "");
-            $temp = fopen($tempnam, "w");
-            $fp = fopen("../../csv/users.csv", "r");
-            if ($fp && $temp) {
-                while (($row = fgetcsv($fp)) !== false) {
-                    if ($row[0] == $email) {
-                        fputcsv($temp, [$email, $nome, $usuario, $senha]);
-                        continue;
-                    }
-                    fputcsv($temp, $row);
-                }
-                fclose($temp);
-                fclose($fp);
-                rename("../../csv/" . basename($tempnam), "../../csv/users.csv");
-                header("location:/src/user/perfil.php", true, 302);
-            }
-        }
-    }
-}
+require '../config.php';
+$id = $_GET["id"];
+$usuario = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM users WHERE user_id = $id"));
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -183,39 +73,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1>Atualizar Dados</h1>
         
                 <form action="<?= $_SERVER["PHP_SELF"] ?>" method="post">
-        
+                    <label for="email">Nome:</label>
+                    <input type="text" id="name" name="name" value="<?= $usuario['user_name'] ?>" disabled>
+                    <br><br>
+
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" value="<?= $dados[0] ?>" disabled>
-                </form>
-        
-                <form action="<?= $_SERVER["PHP_SELF"] ?>" method="post">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" value="<?= $dados[1] ?>" required>
-                    <input type="submit" value="Editar">
-                </form>
-                
-                <form action="<?= $_SERVER["PHP_SELF"] ?>" method="post">
-                    <label for="usuario">Usuário:</label>
-                    <input type="text" id="usuario" name="usuario" value="<?= $dados[2] ?>" required>
-                    <input type="submit" value="Editar">
-                    <?php if (!$dadosValidos) : ?>
-                        <?php if (!$checkUsuario) : ?>
-                            <p>Usuário já utilizado</p>
-                        <?php endif?>
-                     <?php endif ?>
-                </form>
-                <form action="<?= $_SERVER["PHP_SELF"] ?>" method="post">
+                    <input type="text" id="email" name="email" value="<?= $usuario['user_email'] ?>" disabled>
+                    <br><br>
+
+                    <label for="nome">Usuário(a):</label>
+                    <input type="text" id="nome" name="usuario" value="<?= $usuario['user_username'] ?>" required>
+                    <br><br>
+
                     <label for="senha">Senha:</label>
-                    <input type="password" name="senha" id="senha" value="<?= $dados[3] ?>" required>
+                    <input type="password" name="senha" id="senha" value="<?= $usuario['user_password'] ?>" required>
                     <label for="confSenha">Confirmar senha:</label>
-                    <input type="password" name="confirmarSenha" id="confSenha" value="<?= $dados[3] ?>" required>
-                    <input type="submit" value="Editar">
-                    <?php if (!$dadosValidos) : ?>
-                        <?php if (!$senhasIguais) : ?>
-                            <p>As senha devem ser iguais</p>
-                        <?php endif?>
-                     <?php endif ?>    
+                    <input type="password" name="confirmarSenha" id="confSenha" value="<?= $usuario['user_password'] ?>" required>
+                    <br><br>
+                    
+                    <button type ="submit" name="submit" value = "edit" onclick="return confirm('Confirma as informações?')">Editar</button>
                 </form>
+                <br>
                 <button><a style="color:black" href="perfil.php">Voltar</a></button>
         </div>
     </div>
