@@ -9,7 +9,7 @@ $dataPublicacao = date("F j, Y, H:i ");
 // vai receber o conteúdo original com a modificação
 $arquivoTemporario = tempnam("../../csv", "");
 
-$criador =  $_SESSION["userEmail"];
+$criador =  $_SESSION["userUsuario"];
 
 $original = fopen('../../csv/publis.csv', 'r');
 $temp = fopen($arquivoTemporario,'w');

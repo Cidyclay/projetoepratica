@@ -4,7 +4,8 @@
     $titulo = $_POST['titulo'];
     $conteudo = $_POST['conteudo'];
 
-    $criador =  $_SESSION["userEmail"];
+    $criador =  $_SESSION["userUsuario"];
+
 
 
     date_default_timezone_set("America/Sao_Paulo");
