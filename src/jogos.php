@@ -24,7 +24,8 @@
   }
 
   img{
-    border: 8px solid #000; /* Cor e espessura da borda */
+    border: 7px; /* Cor e espessura da borda */
+    border-radius: 10px; /* Raio da borda (valores em pixels) */
     filter: grayscale(100%); /* Inicialmente, aplica um efeito de escala 'cor' á imagem */ 
 
   }
@@ -41,6 +42,7 @@
     opacity: 0.8; /* Define a opacidade da imagem quando o cursor está sobre ela */ 
     filter: grayscale(0%); /* Remove o efeito de escala 'cor' */
     transition: filter 0.2s; /* Transição suave quando o cursor entra e sai da imagem */
+    transform: scale(1.1); /* Aumenta a escala da imagem em 10% */
            
     }
 
