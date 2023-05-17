@@ -1,17 +1,6 @@
 <?php 
     session_start();
-    if (isset($_SESSION["userEmail"])) {
-        $parentDir = dirname(__DIR__);
-        $filePath = $parentDir . '/users.csv';
-        $fp = fopen("C:\Users\aluno.biblioteca\Documents\GitHub\projetoepratica\csv\users.csv", "r");
-        if ($fp) {
-            while (($row = fgetcsv($fp)) !== false) {
-                if ($_SESSION["userEmail"] == $row[0]) {
-                    break;
-                }
-            }
-            fclose($fp);
-        }
-    }else {
-        header("location:/src/login.php");
+    if (!isset($_SESSION["auth"]) or $_SESSION["auth"] !== true) {
+        header("location: /src/login.php", true, 302);
+        exit;
     }

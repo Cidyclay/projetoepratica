@@ -9,31 +9,43 @@
     <link rel="stylesheet" href="/style/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>MGT</title>
-</head>
-<body>
-    <?php include "componentes/navBar.php"?>
-    <?= navBar("Destaques", "src/user/perfil.php", "index.php", "src/comunidade.php", "src/jogos.php") ?>
-    <div class="divBody">
-        <h1 class="TituloNoticia" style="text-align: center;">Notícias</h1>
-        <div class="Post1">
-            <img class="Imagem" style=" width: 500px;
-            margin-top: 20px;
-            margin-left: 250px;" src="https://assets.b9.com.br/wp-content/uploads/2021/06/vavab9.jpg" alt="Valorant wallapaper">
-            <p class="D" style="margin-left: 800px;
-            margin-top: -250px;">13/04/2023</p>
-            <img class="Imagem" style=" width: 500px;
-            margin-top: 400px;
-            margin-left: 250px;" src="https://assets.b9.com.br/wp-content/uploads/2021/06/vavab9.jpg" alt="Valorant wallapaper">
-        </div>
-        <div class="Post2">
-        <p class="D" style="margin-left: 800px;
-            margin-top: -250px;">13/04/2023</p>
-        <p class="PrimeiraText" style="margin-left: 800px;
-            margin-top: 0px;">Veja as ultimas atualizações para as suas ranqueadas do valorant</p>
-        <a class="PrimeiraNoticia" style="margin-left: 800px;
-            margin-top: -250px;" href="https://playvalorant.com/pt-br/news/community/torneios-de-comunidade-14-04-a-20-04/"> Veja a noticia</a>
-        </div>
+    <style>
+        .notes {
+            width: 400px;
+            height: 400px;
+            text-align: center;
+        }
 
+        .notDiv {
+            width: 400px;
+            height: 400px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <?php include "componentes/navBar.php" ?>
+    <div id="up"></div>
+    <?= navBar("Destaques", "src/user/perfil.php", "index.php", "src/comunidade.php", "src/jogos.php") ?>
+    <div class="divBody" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="notes">
+            <div class="notDiv">
+                <a href="https://playvalorant.com/pt-br/news/community/torneios-de-comunidade-12-05-a-18-05/" target="_blank">
+                    <img src="https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt1fb651358bfe01fe/60c10342d475801b9d54fe31/TORNEIOS_DE_COMUNIDADE_VAL_CARD.jpg?auto=webp&disable=upscale&width=364" alt="">
+                    <p>11/05/23</p>
+                    <h1>TORNEIOS DE COMUNIDADE - 12/05 A 18/05</h1>
+                </a>
+            </div>
+            <div class="notDiv">
+                <a href="https://www.leagueoflegends.com/pt-br/news/game-updates/notas-da-atualizacao-13-9/" target="_blank">
+                    <img src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt132112adb6e293fd/6449beefef41f64ab2952601/050223_LoL_Patch_13_9_Notes_Banner.jpg?quality=90&crop=1%3A1&width=240" alt="">
+                    <p>03/05/23</p>
+                    <h1>NOTAS DA ATUALIZAÇÃO 13.9</h1>
+                </a>
+            </div>
+            </div>
+        </div>
     </div>
 </body>
 

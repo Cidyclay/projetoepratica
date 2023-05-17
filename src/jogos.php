@@ -43,7 +43,8 @@
 <body>
     <?php include "../componentes/navBar.php" ?>
     <?= navBar("Jogos", "user/perfil.php", "/index.php", "comunidade.php", "jogos.php") ?>
-    <div class="divBody" style="height: 100%; width: 97vw; background-color: rgb(52, 2, 98);">
+    <div id="up"></div>
+    <div class="divBody">
         <?php if (isset($_SESSION["user"])) : ?>
             <?= $_SESSION["user"] ?>
         <?php endif ?>

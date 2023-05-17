@@ -1,29 +1,30 @@
-<?php 
-    $dadosValidos = true;
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-    if (isset($email) && isset($senha)) {
-      $fp = fopen("../csv/users.csv", "r");
-      if ($fp) {
-        while (($row = fgetcsv($fp)) !== false) {
-          if ($row[0] == $email && $row[3] == $senha) {
-            session_start();
-            $_SESSION["userEmail"] = $row[0];
-            $_SESSION["userUsuario"] = $row[2];
-            fclose($fp);
-            header("location:/src/comunidade.php", true, 302);
-            break;
-          }
-        }
-        $dadosValidos = false;
-        if (!$dadosValidos) {
+<?php
+$dadosValidos = true;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $email = $_POST["email"];
+  $senha = $_POST["senha"];
+  if (isset($email) && isset($senha)) {
+    $fp = fopen("../csv/users.csv", "r");
+    if ($fp) {
+      while (($row = fgetcsv($fp)) !== false) {
+        if ($row[0] == $email && $row[3] == $senha) {
+          session_start();
+          $_SESSION["userEmail"] = $row[0];
+          $_SESSION["userUsuario"] = $row[2];
+          $_SESSION["auth"] = true;
           fclose($fp);
-        }   
+          header("location:/src/comunidade.php", true, 302);
+          break;
+        }
+      }
+      $dadosValidos = false;
+      if (!$dadosValidos) {
+        fclose($fp);
       }
     }
   }
-  
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -48,7 +49,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    box-shadow: 6px 6px 0px black;
+    box-shadow: 10px 8px 20px rgba(0, 0, 0, 0.5);
   }
 
   #h3Login {
@@ -58,41 +59,6 @@
     text-align: center;
   }
 
-  .input {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin-top: 0.5rem;
-    color: #4b5563;
-    background-color: #fff;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    border-radius: 0.5rem;
-  }
-
-  button {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-width: 1px; 
-    border-style: solid; 
-    border-color: black;
-    border-radius: 0.5rem;
-    box-shadow: 3px 3px 0 1px black;
-  }
-
-  button:hover {
-    background-color: #836FFF;
-    box-shadow: 3px 3px 0 1px black;
-  }
-
-  button:focus {
-    box-shadow: 0 0 0 2px rgba(38, 103, 255, 0.5);
-  }
-
-  button:active {
-    box-shadow: 0 0 0 0 black;
-    transform: translate(4px, 4px);  }
-
   #parteCima {
     display: flex;
     flex-direction: column;
@@ -100,35 +66,40 @@
     align-items: center;
   }
 </style>
+
 <body>
-  <?php include "../componentes/navBar.php"?>
-  <?= navBar("Login", "user/perfil.php", "/index.php", "comunidade.php", "jogos.php") ?>
-  <div class="divBody" style=" display:flex; flex-direction: column;  justify-content: center; align-items: center; width: 97vw; height: 100%;">
+  <?php include "../componentes/navBar.php" ?>
+  <?= navBar("Login", "user/perfil.php", "/index.php", "comunidade.php", "jogos.php","") ?>
+  <div class="divBody" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 
     <div id="formularioLogin">
 
       <div id="parteCima">
 
         <h3 id="h3Login" style="border-bottom: 2px solid; border-color: #2d2969; font-size: 1.5em;">Faça o login</h3>
-        
-        <form action="<?= $_SERVER["PHP_SELF"]?>" method="POST">
+
+        <form action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
 
           <div style="width: 100%;  margin-top: 1rem;">
-            <input class="input" type="email" name="email" placeholder="E-mail" required>
+            <input type="email" name="email" placeholder="E-mail" required>
           </div>
 
           <div style="width: 100%;  margin-top: 1rem;">
-            <input class="input" type="password" name="senha" placeholder="Senha" required>
+            <input type="password" name="senha" placeholder="Senha" required>
           </div>
           <div style="margin-top: 10%; display: flex; justify-content: center;">
-            <button>Entrar</button>
+            <button class="buttonForm">Entrar</button>
           </div>
         </form>
-        <?php if (!$dadosValidos):?>
-          <p class="pAviso">Dados invalidos</p>
-        <?php endif?>
         <p><a href="cadastro.php">Faça seu cadastro aqui!</a></p>
       </div>
+    </div>
+    <div style="height: 10px;">
+      <?php if (!$dadosValidos) : ?>
+        <p class="aviso">Dados invalidos</p>
+      <?php endif ?>
+    </div>
   </div>
 </body>
+
 </html>

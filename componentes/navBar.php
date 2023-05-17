@@ -3,11 +3,7 @@
         return "
         <aside>
             <nav>
-                <a href=$login>
-                    <img id='imgNavBar' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh-Bn7-KSnRyMXgvNe72nE1qh9kTxrBHM2cQ&usqp=CAU' alt='Perfil'>
-                </a>
-
-                <a class='iconesNavBar' href=$home>
+               <a class='iconesNavBar' href=$home>
                     <i class='icones material-symbols-outlined'>home</i>
                 </a>
 
@@ -20,7 +16,7 @@
                 </a>
             </nav>        
 
-        <h1 id='texto'>$texto</h1>
+        <h1 id='texto'><a href='#up'>$texto</a></h1>
         
         <div>
             <a class='iconesNavBar'  href=$login>

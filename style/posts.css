@@ -1,0 +1,114 @@
+.post-form {
+    margin-top: 5%;
+    width: 30rem;
+    height: 25rem;
+    background-color:rgb(17 24 39);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 10px 8px 10px rgba(0, 0, 0, 0.5);
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.post {
+    max-width: 36rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-color:rgb(17 24 39);
+    word-wrap: break-word;
+    margin-top: 20px;
+    box-shadow: 10px 8px 10px rgba(0, 0, 0, 0.5);
+}
+
+.data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-dia {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: #CBD5E0;
+}
+
+.user {
+    padding-left: 0.75rem;
+    /* Espaçamento horizontal esquerdo de 12px */
+    padding-right: 0.75rem;
+    /* Espaçamento horizontal direito de 12px */
+    padding-top: 0.25rem;
+    /* Espaçamento vertical superior de 4px */
+    padding-bottom: 0.25rem;
+    /* Espaçamento vertical inferior de 4px */
+    font-size: 0.875rem;
+    /* Tamanho da fonte 14px */
+    font-weight: bold;
+    /* Peso da fonte bold (negrito) */
+    color: #f7fafc;
+    /* Cor do texto branco (#f7fafc) */
+    transition-property: color, background-color;
+    /* Propriedades de transição de cor */
+    transition-duration: 0.3s;
+    /* Duração da transição de 0.3 segundos */
+    transform: none;
+    /* Transformação nula */
+    background-color: #4a5568;
+    /* Cor de fundo cinza (#4a5568) */
+    border-radius: 0.25rem;
+    /* Raio do canto arredondado de 4px */
+}
+
+.post-titulo {
+    font-size: 1.75rem;
+    /* Tamanho da fonte extra grande */
+    font-weight: bold;
+    /* Texto em negrito */
+    color: #fff;
+    /* Cor de texto branca no modo escuro */
+}
+
+.post-conteudo {
+    margin-top: 0.5rem;
+    /* Margem superior de 0.5rem (8px) */
+    color: #cbd5e0;
+    /* Cor de texto cinza no modo escuro */
+}
+
+.post-form textarea {
+    width: 85%;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    resize: vertical;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    border-width: 1px;
+    border-radius: 0.375rem;
+    color: #d2d6dc;
+    background-color: #1F2937;
+}
+.post-form textarea:focus {
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+    border-color: #a3bffa;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+    background-color: #1a202c;
+}

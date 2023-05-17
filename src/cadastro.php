@@ -1,9 +1,8 @@
-<!-- ### armazenando ### -->
 <?php
-    $dadosValidos = true;
-    $checkEmail = true;
-    $checkUsuario = true;
-    $senhasIguais = false;
+$dadosValidos = true;
+$checkEmail = true;
+$checkUsuario = true;
+$senhasIguais = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $nome = $_POST["nome"];
@@ -19,26 +18,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($email == $row[0]) {
                     $checkEmail = false;
                     $dadosValidos = false;
-                    fclose($fp);
                     break;
                 } else if ($usuario == $row[2]) {
                     $checkUsuario = false;
                     $dadosValidos = false;
-                    fclose($fp);
                     break;
                 }
             }
+            fclose($fp);
             if ($senha != $confirmarSenha) {
                 $senhasIguais = true;
                 $dadosValidos = false;
-                fclose($fp);
             }
             if ($dadosValidos) {
-                fclose($fp);
                 $fpADD = fopen("../csv/users.csv", "a");
                 fputcsv($fpADD, [$email, $nome, $usuario, $senha]);
                 fclose($fpADD);
-                header("location:/src/login.php");
+                header("location:/src/login.php", true, 302);
+                exit;
             }
         }
     }
@@ -67,51 +64,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             flex-direction: column;
             align-items: center;
             justify-content: space-around;
-            box-shadow: 6px 6px 0px black;
-
-        }
-
-        .input {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            margin-top: 0.5rem;
-            color: #4b5563;
-            background-color: #fff;
-            border-width: 1px;
-            border-style: solid;
-            border-color: black;
-            border-radius: 0.5rem;
-        }
-
-        button {
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            border-width: 1px;
-            border-style: solid;
-            border-color: black;
-            border-radius: 0.5rem;
-            box-shadow: 3px 3px 0 1px black;
-        }
-
-        button:hover {
-            background-color: #836FFF;
-            box-shadow: 3px 3px 0 1px black;
-        }
-
-        button:focus {
-            box-shadow: 0 0 0 2px rgba(38, 103, 255, 0.5);
-        }
-
-        button:active {
-            box-shadow: 0 0 0 0 black;
-            transform: translate(4px, 4px);
+            box-shadow: 10px 8px 20px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
+
 <body>
-    <?php include "../componentes/navBar.php"?>
-    <?= navBar("Conta", "/user/perfil.php", "/index.php", "comunidade.php", "jogos.php") ?>
-    <div class="divBody">
+    <?php include "../componentes/navBar.php" ?>
+    <?= navBar("Conta", "/src/user/perfil.php", "/index.php", "comunidade.php", "jogos.php") ?>
+    <div class="divBody" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <form id="formularioCadastro" action="<?= $_SERVER["PHP_SELF"] ?>" method="POST">
             <h1 class="TituloCadastro" style="border-bottom: 2px solid; border-color: #2d2969; font-size: 2em;">Cadastro</h1>
             <div>
@@ -134,18 +95,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input class="input" type="password" name="confirmarSenha" placeholder="Confirmar Senha">
 
             </div>
-            <input type="submit" value="Cadastrar">
+            <div style="margin-top: 10%; display: flex; justify-content: center;">
+                <button class="buttonForm">Entrar</button>
+            </div>
+
+
             <p><a href="login.php">Já é cadastrado? Login</a></p>
         </form>
-        <?php if (!$dadosValidos):?>    
-            <?php if(!$checkEmail):?>
-                <p class="pAviso">Email já em uso</p>
-            <?php elseif (!$checkUsuario):?>
-                <p class="pAviso">Usuario já em uso</p>
-            <?php elseif ($senhasIguais):?>
-                <p class="pAviso">As senhas devem ser iguais</p>
-            <?php endif?>
-        <?php endif?>
+        <div style="height: 10px;">
+            <?php if (!$dadosValidos) : ?>
+                <?php if (!$checkEmail) : ?>
+                    <p class="aviso">Email já em uso</p>
+                <?php elseif (!$checkUsuario) : ?>
+                    <p class="aviso">Usuario já em uso</p>
+                <?php elseif ($senhasIguais) : ?>
+                    <p class="aviso">As senhas devem ser iguais</p>
+                <?php endif ?>
+            <?php endif ?>
+        </div>
     </div>
 
 </body>
