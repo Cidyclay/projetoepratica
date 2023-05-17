@@ -23,6 +23,11 @@
     align-items: center; /* Centraliza o conteúdo verticalmente */
   }
 
+  img{
+    border: 8px solid #000; /* Cor e espessura da borda */
+    filter: grayscale(100%); /* Inicialmente, aplica um efeito de escala 'cor' á imagem */ 
+
+  }
   .imagem {
     width: 100%; /* Assegura que as imagens ocupem 100% da largura da célula */
     height: auto; /* Ajusta a altura automaticamente para manter a proporção da imagem */
@@ -33,10 +38,10 @@
     font-size: 50px /* Tamanho do texto */
   }
     img:hover{
-    opacity: 0.8; /* Define a opacidade da imagem quando o cursor está sobre ela */
-    filter: grayscale(100%); /* Aplica um efeito de escala 'cor' á imagem */
-    transition: 0.1s; /* Transição suave quando o cursor entra e sai da imagem */
-       
+    opacity: 0.8; /* Define a opacidade da imagem quando o cursor está sobre ela */ 
+    filter: grayscale(0%); /* Remove o efeito de escala 'cor' */
+    transition: filter 0.2s; /* Transição suave quando o cursor entra e sai da imagem */
+           
     }
 
 </style>
