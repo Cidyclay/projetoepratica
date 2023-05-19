@@ -1,3 +1,12 @@
+<?php
+
+
+$conteudo = file_get_contents('dados.json'); //VocÊ pode utilizar API(com  CURL, e utilizar a função json_decode); Utilizei
+// um dados.json por conta do limite de requests da api.
+$data = json_decode($conteudo, true);
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,37 +14,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/componentes/navBar.css">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <title>MGT</title>
+    <title>Teste API</title>
 </head>
 
 <body>
-    <?php include "componentes/navBar.php" ?>
-    <?= navBar("Destaques") ?>
-    <div class="divBody">
-        <h1 class="TituloNoticia" style="text-align: center;">Notícias</h1>
-        <div class="Post1">
-            <img class="Imagem" style=" width: 500px;
-            margin-top: 20px;
-            margin-left: 250px;" src="https://assets.b9.com.br/wp-content/uploads/2021/06/vavab9.jpg" alt="Valorant wallapaper">
-            <p class="D" style="margin-left: 800px;
-            margin-top: -250px;">13/04/2023</p>
-            <img class="Imagem" style=" width: 500px;
-            margin-top: 400px;
-            margin-left: 250px;" src="https://assets.b9.com.br/wp-content/uploads/2021/06/vavab9.jpg" alt="Valorant wallapaper">
-        </div>
-        <div class="Post2">
-        <p class="D" style="margin-left: 800px;
-            margin-top: -250px;">13/04/2023</p>
-        <p class="PrimeiraText" style="margin-left: 800px;
-            margin-top: 0px;">Veja as ultimas atualizações para as suas ranqueadas do valorant</p>
-        <a class="PrimeiraNoticia" style="margin-left: 800px;
-            margin-top: -250px;" href="https://playvalorant.com/pt-br/news/community/torneios-de-comunidade-14-04-a-20-04/"> Veja a noticia</a>
-        </div>
+    <?php for ($i = 0; $i <= 4; $i++) {
+        $dataUtc = $data['news_results'][$i]['date_utc'];
 
-    </div>
+        $dataBrasil = date('d/m/Y H:i:s', strtotime($dataUtc));
+    ?>
+        <h1><?= $data['news_results'][$i]['title'] ?></h1>
+        <img src="<?= $data['news_results'][$i]['thumbnail'] ?>" alt="Thumbnail">
+        <p><?= $data['news_results'][$i]['snippet'] ?></p>
+        <p><?= $dataBrasil ?></p>
+        <a href="<?= $data['news_results'][$i]['link'] ?>" target="_blank">Veja mais</a>
+    <?php } ?>
 </body>
 
 </html>

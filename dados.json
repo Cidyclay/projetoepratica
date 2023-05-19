@@ -1,0 +1,223 @@
+{
+    "request_info": {
+      "success": true,
+      "credits_used": 92,
+      "credits_remaining": 8,
+      "credits_used_this_request": 1
+    },
+    "search_parameters": {
+      "engine": "google",
+      "search_type": "news",
+      "q": "Mortal Kombat",
+      "news_type": "all",
+      "location": "Brazil",
+      "google_domain": "google.com.br",
+      "gl": "br",
+      "hl": "pt",
+      "time_period": "last_day",
+      "sort_by": "relevance",
+      "page": "1",
+      "max_page": "1",
+      "num": "5",
+      "output": "json"
+    },
+    "search_metadata": {
+      "created_at": "2023-05-19T00:56:29.081Z",
+      "processed_at": "2023-05-19T00:56:39.533Z",
+      "total_time_taken": 10.45,
+      "pages": [
+        {
+          "created_at": "2023-05-19T00:56:29.081Z",
+          "processed_at": "2023-05-19T00:56:39.533Z",
+          "total_time_taken": 10.45,
+          "page": "1",
+          "engine_url": "https://www.google.com.br/search?q=Mortal+Kombat&gl=br&hl=pt&uule=w+CAIQICIGQnJhemls&tbm=nws&num=5&tbs=qdr%3Ad",
+          "html_url": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal+Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&page=1&max_page=1&num=5&output=html",
+          "json_url": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal+Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&page=1&max_page=1&num=5&output=json",
+          "location_auto_message": "We have automatically set the 'google_domain', 'gl' and 'hl' parameters to match the supplied location of 'Brazil'. You can stop this behaviour by setting the 'location_auto' parameter to 'false'."
+        }
+      ]
+    },
+    "search_information": {
+      "original_query_yields_zero_results": false,
+      "search_tabs": [
+        {
+          "position": 1,
+          "text": "Todas",
+          "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&source=lnms&sa=X&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ_AUoAHoECAIQAg"
+        },
+        {
+          "position": 2,
+          "text": "Imagens",
+          "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbm=isch&source=lnms&tbs=qdr:d&sa=X&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ_AUoAXoECAIQAw"
+        },
+        {
+          "position": 3,
+          "text": "Vídeos",
+          "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbm=vid&source=lnms&tbs=qdr:d&sa=X&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ_AUoA3oECAIQBQ"
+        },
+        {
+          "position": 4,
+          "text": "Shopping",
+          "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbm=shop&source=lnms&sa=X&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ_AUoBHoECAIQBg"
+        }
+      ],
+      "total_results": 12700,
+      "time_taken_displayed": 0.28,
+      "detected_location": "Brasil"
+    },
+    "pagination": {
+      "pages": [
+        {
+          "current": 1,
+          "next": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=5&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8NMDegQIBBAW",
+          "other_pages": [
+            {
+              "page": 2,
+              "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=5&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8tMDegQIBBAE"
+            },
+            {
+              "page": 3,
+              "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=10&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8tMDegQIBBAG"
+            },
+            {
+              "page": 4,
+              "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=15&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8tMDegQIBBAI"
+            },
+            {
+              "page": 5,
+              "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=20&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8tMDegQIBBAK"
+            },
+            {
+              "page": 6,
+              "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=25&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8tMDegQIBBAM"
+            },
+            {
+              "page": 7,
+              "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=30&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8tMDegQIBBAO"
+            },
+            {
+              "page": 8,
+              "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=35&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8tMDegQIBBAQ"
+            },
+            {
+              "page": 9,
+              "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=40&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8tMDegQIBBAS"
+            },
+            {
+              "page": 10,
+              "link": "https://www.google.com.br/search?q=Mortal+Kombat&num=5&gl=br&hl=pt&tbs=qdr:d&tbm=nws&ei=RslmZMrFFYLpsAfIx67gAg&start=45&sa=N&ved=2ahUKEwjKgNelloD_AhWCNOwKHcijCywQ8tMDegQIBBAU"
+            }
+          ],
+          "api_pagination": {
+            "next": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=2&num=5",
+            "other_pages": [
+              {
+                "page": 2,
+                "link": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=2&num=5"
+              },
+              {
+                "page": 3,
+                "link": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=3&num=5"
+              },
+              {
+                "page": 4,
+                "link": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=4&num=5"
+              },
+              {
+                "page": 5,
+                "link": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=5&num=5"
+              },
+              {
+                "page": 6,
+                "link": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=6&num=5"
+              },
+              {
+                "page": 7,
+                "link": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=7&num=5"
+              },
+              {
+                "page": 8,
+                "link": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=8&num=5"
+              },
+              {
+                "page": 9,
+                "link": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=9&num=5"
+              },
+              {
+                "page": 10,
+                "link": "https://api.serpwow.com/live/search?api_key=7D379056FD6C490BB46CC38D1A917DE8&engine=google&search_type=news&q=Mortal%20Kombat&news_type=all&location=Brazil&google_domain=google.com.br&gl=br&hl=pt&time_period=last_day&sort_by=relevance&max_page=1&output=json&id=req0&page=10&num=5"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "news_results": [
+      {
+        "position": 1,
+        "title": "'Mortal Kombat 1' ganha primeiro trailer; ASSISTA",
+        "link": "https://g1.globo.com/pop-arte/games/noticia/2023/05/18/mortal-kombat-1-ganha-primeiro-trailer.ghtml",
+        "domain": "g1.globo.com",
+        "source": "G1",
+        "date": "10 horas atrás",
+        "date_utc": "2023-05-18T14:56:39.470Z",
+        "snippet": "\"Mortal Kombat 1\" ganhou o primeiro trailer nesta quinta-feira (18). A Warner Bros. comunicou o lançamento do jogo para o dia 19 de setembro para Nintendo...",
+        "thumbnail": "data:image/jpeg;base64,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",
+        "page": "1",
+        "position_overall": 1
+      },
+      {
+        "position": 2,
+        "title": "Mortal Kombat 1 (MK1) ganha trailer e chega ainda em 2023; veja detalhes",
+        "link": "https://www.techtudo.com.br/noticias/2023/05/mortal-kombat-1-e-anunciado-para-2023-veja-personagens-e-detalhes-edjogos.ghtml",
+        "domain": "www.techtudo.com.br",
+        "source": "TechTudo",
+        "date": "10 horas atrás",
+        "date_utc": "2023-05-18T14:56:39.473Z",
+        "snippet": "Mortal Kombat 1 (MK1) ganha trailer e chega ainda em 2023; veja detalhes. Novo jogo de luta da NetherRealm Studio chega para PC, PS5, Xbox Series X/S e Nintendo...",
+        "thumbnail": "data:image/jpeg;base64,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",
+        "page": "1",
+        "position_overall": 2
+      },
+      {
+        "position": 3,
+        "title": "Mortal Kombat 1 é anunciado com trailer sangrento e chega ...",
+        "link": "https://br.ign.com/mortal-kombat-12/108968/news/mortal-kombat-1-e-anunciado-com-trailer-sangrento-e-chega-ainda-em-2023",
+        "domain": "br.ign.com",
+        "source": "IGN Brasil",
+        "date": "10 horas atrás",
+        "date_utc": "2023-05-18T14:56:39.476Z",
+        "snippet": "Mortal Kombat 1 é real, foi oficialmente anunciado e chega para PC, PlayStation 5, Nintendo Switch, Xbox Series X e Series S ainda este ano,...",
+        "thumbnail": "data:image/jpeg;base64,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",
+        "page": "1",
+        "position_overall": 3
+      },
+      {
+        "position": 4,
+        "title": "Mortal Kombat 1 será lançado em setembro com novo universo",
+        "link": "https://m.leiaja.com/tecnologia/2023/05/18/mortal-kombat-1-sera-lancado-em-setembro-com-novo-universo/",
+        "domain": "m.leiaja.com",
+        "source": "LeiaJá",
+        "date": "9 horas atrás",
+        "date_utc": "2023-05-18T15:56:39.481Z",
+        "snippet": "Acabou a espera: Mortal Kombat 1 será lançado em 19 de setembro de 2023. A informação da Warner Bros. Games e da NetherRealm Studios é acompanhada de um...",
+        "thumbnail": "data:image/jpeg;base64,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",
+        "page": "1",
+        "position_overall": 4
+      },
+      {
+        "position": 5,
+        "title": "Essa é uma das cenas mais tristes de Mortal Kombat",
+        "link": "https://www.sbt.com.br/variedades/sbt-games/fiquepordentro/247782-uma-das-cenas-mais-tristes-de-mortal-kombat",
+        "domain": "www.sbt.com.br",
+        "source": "SBT",
+        "date": "5 horas atrás",
+        "date_utc": "2023-05-18T19:56:39.484Z",
+        "snippet": "Neste jogo, Liu Kang é morto por Shang Tsung e Quan Chi, os vilões principais da trama. Sua morte é um momento impactante na história da franquia Mortal Kombat,...",
+        "thumbnail": "data:image/jpeg;base64,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",
+        "page": "1",
+        "position_overall": 5
+      }
+    ]
+  }
