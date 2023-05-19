@@ -1,6 +1,6 @@
 <?php
 session_start();
-$HOST = "localhost";
+$HOST = "127.0.0.1:3306";
 $ROOT = "root";
 $PASS = "";
 $BASE = "projetoepratica";

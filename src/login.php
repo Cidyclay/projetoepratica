@@ -1,7 +1,7 @@
 <?php 
 require 'config.php';
 if(!empty($_SESSION['id'])) {
-  header("Location:/projetoepratica/src/comunidade.php");
+  header("src\comunidade.php");
 }
 if(isset($_POST["submit"])) {
   $usuarioemail = $_POST['usuarioemail'];
@@ -12,7 +12,7 @@ if(isset($_POST["submit"])) {
     if($senha == $row['user_password']) {
       $_SESSION["login"] = true;
       $_SESSION["id"] = $row["user_id"];
-      header("Location:/projetoepratica/src/comunidade.php", true, 302);
+      header("src\comunidade.php", true, 302);
     }
     else {
       echo
