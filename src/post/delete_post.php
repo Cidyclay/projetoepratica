@@ -2,11 +2,9 @@
 
 $id = $_GET['id'];
 
+$arquivoTemporario = tempnam("../../csv", "");
 
-$arquivoTemporario = tempnam('.','');
-
-
-$original = fopen('publis.csv', 'r');
+$original = fopen('../../csv/publis.csv', 'r');
 $temp = fopen($arquivoTemporario,'w');
 while(($row = fgetcsv($original)) !== false) {
     if($row[0] == $id) {
@@ -17,10 +15,8 @@ while(($row = fgetcsv($original)) !== false) {
 
 fclose($temp);
 fclose($original);
-
-rename($arquivoTemporario, 'publis.csv');
-
-header('location: comunidadeSocial.php');
+rename("../../csv/" . basename($arquivoTemporario), "../../csv/publis.csv");
+header('location: /src/comunidade.php', true, 302);
 
 
 ?>

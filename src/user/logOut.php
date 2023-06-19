@@ -1,4 +1,4 @@
 <?php 
     session_start();
     session_destroy();
-    header("location: login.php", true, 302);
+    header("location:/src/login.php", true, 302);
